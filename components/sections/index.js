@@ -1,0 +1,9 @@
+export { default as Hero } from "./Hero";
+export { default as Stats } from "./Stats";
+export { default as Services } from "./Services";
+export { default as FeaturedWork } from "./FeaturedWork";
+export { default as TechSpotlight } from "./TechSpotlight";
+export { default as Excellence } from "./Excellence";
+export { default as Evolution } from "./Evolution";
+export { default as Leadership } from "./Leadership";
+export { default as Contact } from "./Contact";

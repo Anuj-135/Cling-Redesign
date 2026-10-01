@@ -1,26 +1,328 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   CLING INFOTECH REDESIGN — DESIGN SYSTEM TOKENS (PHASE 1)
+   Source of Truth: docs/DESIGN.md (Written Sections) & IMPLEMENTATION_PLAN.md
+   Aesthetic: Technical Precision Dark (High-Contrast Slate + Crimson Red)
+   Rules: Strictly NO gradients, NO green/blue/purple accents, tokens only.
+   ========================================================================== */
+
+@theme {
+  /* Canvas & Dark Surface Hierarchy */
+  --color-canvas: #0B0F17;
+  --color-surface-0: #0B0F17;
+  --color-surface-1: #111827;
+  --color-surface-2: #1E293B;
+  --color-surface-3: #0F172A;
+  --color-surface-code: #080C14;
+
+  /* Crimson Brand Accent (Strictly reserved for CTAs, active states, focus) */
+  --color-crimson: #E11D48;
+  --color-crimson-hover: #BE123C;
+  --color-crimson-active: #9F1239;
+  --color-crimson-muted: rgba(225, 29, 72, 0.12);
+  --color-crimson-border: rgba(225, 29, 72, 0.3);
+  --color-crimson-text: #FB7185;
+
+  /* Text Hierarchy (Dark Canvas) */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  /* Borders & Delimiters (Dark Canvas) */
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.18);
+  --color-border-active: #E11D48;
+  --color-border-input: #334155;
+
+  /* Neutral Badges & Chips */
+  --color-neutral-badge-bg: #1E293B;
+  --color-neutral-badge-text: #94A3B8;
+  --color-neutral-badge-border: rgba(255, 255, 255, 0.06);
+
+  /* Light-Surface Tokens (Services & Engineering Excellence Sections) */
+  --color-light-canvas: #F8FAFC;
+  --color-light-surface-0: #F8FAFC;
+  --color-light-surface-1: #FFFFFF;
+  --color-light-surface-2: #F1F5F9;
+  --color-light-border: #E2E8F0;
+  --color-light-border-hover: #CBD5E1;
+  --color-light-text-primary: #0F172A;
+  --color-light-text-secondary: #475569;
+  --color-light-text-muted: #94A3B8;
+  --color-light-tag-bg: #F1F5F9;
+  --color-light-tag-text: #334155;
+  --color-light-tag-border: #E2E8F0;
+
+  /* Typography Fonts */
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+
+  /* Radius Scale */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-card: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Spacing Tokens */
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-sm: 1rem;
+  --spacing-gutter-lg: 2rem;
+  --spacing-margin: 2rem;
+  --spacing-margin-sm: 1rem;
+  --spacing-margin-lg: 4rem;
+  --spacing-space-2xs: 0.25rem;
+  --spacing-space-xs: 0.5rem;
+  --spacing-space-sm: 0.75rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2rem;
+  --spacing-space-2xl: 3rem;
+  --spacing-space-3xl: 4rem;
+
+  /* Solid Depth & Low-Contrast Ambient Shadows (No multi-colored or neon glow) */
+  --shadow-card-hover: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  --shadow-modal: 0 24px 48px -12px rgba(0, 0, 0, 0.75);
+  --shadow-inset-well: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES ROOT BACKUP & COMPATIBILITY
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-canvas: #0B0F17;
+  --color-surface-0: #0B0F17;
+  --color-surface-1: #111827;
+  --color-surface-2: #1E293B;
+  --color-surface-3: #0F172A;
+  --color-surface-code: #080C14;
+
+  --color-crimson: #E11D48;
+  --color-crimson-hover: #BE123C;
+  --color-crimson-active: #9F1239;
+  --color-crimson-muted: rgba(225, 29, 72, 0.12);
+  --color-crimson-border: rgba(225, 29, 72, 0.3);
+  --color-crimson-text: #FB7185;
+
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.18);
+  --color-border-active: #E11D48;
+  --color-border-input: #334155;
+
+  --color-light-canvas: #F8FAFC;
+  --color-light-surface-0: #F8FAFC;
+  --color-light-surface-1: #FFFFFF;
+  --color-light-surface-2: #F1F5F9;
+  --color-light-border: #E2E8F0;
+  --color-light-border-hover: #CBD5E1;
+  --color-light-text-primary: #0F172A;
+  --color-light-text-secondary: #475569;
+  --color-light-text-muted: #94A3B8;
+  --color-light-tag-bg: #F1F5F9;
+  --color-light-tag-text: #334155;
+  --color-light-tag-border: #E2E8F0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ==========================================================================
+   GLOBAL FOUNDATION: BASE RESETS & DEFAULTS
+   ========================================================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--color-canvas);
+  color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-canvas);
+  color: var(--color-text-secondary);
+  font-family: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  /* Headings default to Plus Jakarta Sans with geometric authority */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), system-ui, -apple-system, sans-serif;
+    color: var(--color-text-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* Prevent sticky navbar from obscuring anchor headings */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+/* Light-Surface Contextual Heading Hierarchy (Services & Engineering Excellence) */
+.light-surface h1, .light-surface h2, .light-surface h3,
+.light-surface h4, .light-surface h5, .light-surface h6,
+[data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3,
+#services h1, #services h2, #services h3 {
+  color: var(--color-light-text-primary);
+}
+
+/* High-contrast Crimson text selection */
+::selection {
+  background-color: var(--color-crimson);
+  color: #FFFFFF;
+}
+
+/* Accessible focus ring (2px solid Crimson with offset) */
+*:focus-visible {
+  outline: 2px solid var(--color-crimson);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   LAYOUT & CONTAINER UTILITIES
+   Max content container width: 1280px with responsive 8pt gutter margins
+   ========================================================================== */
+
+.container-custom {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* 12-column responsive layout grid */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   DESIGN SYSTEM TYPOGRAPHY UTILITIES
+   Directly matching docs/DESIGN.md scale
+   ========================================================================== */
+
+.text-display-hero {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 2.25rem; /* 36px mobile */
+  line-height: 2.75rem; /* 44px */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .text-display-hero {
+    font-size: 3.5rem; /* 56px desktop */
+    line-height: 4rem; /* 64px */
+    letter-spacing: -0.03em;
+  }
+}
+
+.text-headline-lg {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.75rem; /* 28px mobile */
+  line-height: 2.25rem; /* 36px */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .text-headline-lg {
+    font-size: 2.5rem; /* 40px desktop */
+    line-height: 3rem; /* 48px */
+    letter-spacing: -0.025em;
+  }
+}
+
+.text-headline-md {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.75rem; /* 28px */
+  line-height: 2.25rem; /* 36px */
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-headline-sm {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.text-title-lg {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.625rem; /* 26px */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-title-md {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.text-body-lg {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.text-body-md {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.5rem; /* 24px */
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.text-body-sm {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.25rem; /* 20px */
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+.text-label-md {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.text-label-sm {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
