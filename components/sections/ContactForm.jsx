@@ -68,19 +68,26 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-1.5">
           <span className="text-xs font-mono uppercase tracking-wider text-crimson font-semibold">
-            Inquiry Logged
+            Frontend Demonstration
           </span>
           <h4 className="font-heading font-bold text-2xl text-text-primary">
-            Thank you for reaching out
+            Inquiry Form Validated
           </h4>
           <p className="text-sm text-text-secondary leading-relaxed max-w-md mt-1 font-body">
-            Your project details have been recorded. Our engineering team will review the scope and connect with you via business email.
+            Thank you for exploring our inquiry interface. Client-side validation succeeded. Backend email delivery is currently being integrated. To discuss your project immediately, please reach out directly at{" "}
+            <a href="mailto:info@clinginfotech.com" className="text-crimson underline font-medium">
+              info@clinginfotech.com
+            </a>{" "}
+            or call{" "}
+            <a href="tel:+918264469132" className="text-crimson underline font-medium">
+              +91 8264469132
+            </a>.
           </p>
         </div>
 
         <div className="pt-4">
           <Button variant="secondary" size="sm" onClick={handleReset}>
-            Send Another Inquiry
+            Reset Form
           </Button>
         </div>
       </div>
@@ -171,7 +178,7 @@ export default function ContactForm() {
       </div>
 
       <p className="text-[11px] font-mono text-text-muted text-center pt-1">
-        Direct engineer consultation • Strictly confidential NDA handling
+        Official communication channel • Direct inquiries: info@clinginfotech.com
       </p>
     </form>
   );

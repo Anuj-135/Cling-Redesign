@@ -10,7 +10,7 @@ export const projectsData = [
     name: "Matrix ERP",
     category: "Enterprise Software",
     eyebrow: "Enterprise Resource Planning",
-    client: "Matrix Commercial Solutions",
+    client: "Enterprise Deployment",
     description:
       "A centralized enterprise platform that unifies operations, multi-warehouse inventory, procurement workflows, and executive analytics into a unified real-time dashboard.",
     deliverables: ["Custom ERP Architecture", "Inventory & Warehouse Engine", "Financial Reporting"],
@@ -55,7 +55,7 @@ export const projectsData = [
     name: "Curate",
     category: "CRM & Social Intelligence",
     eyebrow: "Audience Data Automation",
-    client: "Curate Media",
+    client: "Social CRM Deployment",
     description:
       "An automated social contact synchronization and follower intelligence system fetching status metrics across multi-channel social APIs.",
     deliverables: ["API Harvesting Pipeline", "Audience Sync Engine", "CRM Contact Dashboard"],

@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cling Infotech — Homepage Redesign
 
-## Getting Started
+A production-grade, modern landing page redesign for **Cling Infotech** (`clinginfotech.com`), built with Next.js App Router, Tailwind CSS v4, and standard JavaScript.
 
-First, run the development server:
+## Project Purpose
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Transform the existing Cling Infotech web presence into a technical, high-performance landing page representing the company's enterprise software engineering, custom cloud/web/mobile application architecture, AI surveillance intelligence, and 3D visual computing capabilities. All content is strictly grounded in verified facts from the company manifest (`docs/content-manifest.md`).
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Language**: JavaScript (ES6+ / React 19)
+- **Styling**: Tailwind CSS v4 (Design tokens defined in `app/globals.css`)
+- **Typography**: Plus Jakarta Sans (Headings) & Inter (Body / UI) via `next/font/google`
+- **Iconography**: Lucide React
+- **Animations / Utilities**: Framer Motion, standard CSS transitions
+
+## Architecture & Project Structure
+
+The project uses a flat root structure without `src/`:
+
+```
+homepage-redesign/
+├── app/                  # Next.js App Router (layout, page, metadata, globals.css)
+├── components/
+│   ├── layout/          # Navbar, MobileMenu, Footer, WhatsAppButton
+│   ├── sections/        # Homepage sections (Hero, Stats, Services, FeaturedWork,
+│   │                    # TechSpotlight, Excellence, Evolution, Leadership, Contact)
+│   └── ui/              # Reusable primitives (Button, Badge, Card, Input, Textarea,
+│                        # Select, SectionHeader, Container)
+├── data/                # Data-driven content sources (projects, services, stats,
+│                        # timeline, leadership, offices, site)
+├── docs/                # Design specifications, content manifest, reference mockups
+├── lib/                 # Shared utilities and client-side validators
+├── public/              # Static assets and verified images (`public/images/`)
+├── AGENTS.md            # Locked agent rules and guardrails
+└── IMPLEMENTATION_PLAN.md # Phased execution plan
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Design Constraints & System Rules
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Zero Gradients**: Strictly solid, opaque surfaces. Depth is established exclusively through multi-tiered tonal surface layering (`#0B0F17`, `#111827`, `#1E293B`, `#0F172A`) and crisp 1px borders.
+- **Palette Discipline**: High-contrast Dark Canvas with Slate typography and high-chroma Crimson Red (`#E11D48`) accent. No green, blue, cyan, purple, or orange badges.
+- **Alternating Visual Rhythm**: Dark Hero/Stats → Light Services → Dark Featured Work/Tech Spotlight → Light Excellence → Dark Evolution/Leadership/Contact.
+- **Data-Driven & Verified**: No content is hardcoded in JSX; all copy originates from verified data modules matching `docs/content-manifest.md`. No synthetic testimonials or fabricated metrics.
+- **Server Components by Default**: Client interactivity (`"use client"`) is restricted to leaf components (forms, navigation drawer).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Local Development
 
-## Learn More
+```bash
+# Install dependencies
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+# Start development server
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Run linter
+npm run lint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Build for production (Turbopack)
+npm run build
 
-## Deploy on Vercel
+# Start production server locally
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000) in your browser to inspect the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment Target
+
+Configured for zero-config production deployment on the **Vercel Platform**:
+- Framework Preset: Next.js
+- Build Command: `next build`
+- Output Directory: `.next`
+- Node.js Runtime: 20.x / 22.x

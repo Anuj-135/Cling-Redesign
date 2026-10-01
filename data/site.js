@@ -72,9 +72,4 @@ export const siteConfig = {
       ],
     },
   ],
-  legalLinks: [
-    { label: "Privacy Policy", href: "#privacy" },
-    { label: "Terms and Conditions", href: "#terms" },
-    { label: "Cancellation & Refund", href: "#refund" },
-  ],
 };

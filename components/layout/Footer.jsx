@@ -71,23 +71,15 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom Legal / Metadata Bar */}
+        {/* Bottom Metadata Bar */}
         <div className="py-6 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
           <p>
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6">
-            {siteConfig.legalLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="hover:text-text-secondary transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
+          <p className="text-text-muted font-mono text-[11px]">
+            {siteConfig.legalName}
+          </p>
         </div>
       </Container>
     </footer>
